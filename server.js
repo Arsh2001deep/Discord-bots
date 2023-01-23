@@ -16,7 +16,7 @@ const client = new Client({
 });
 
 
-client.login(process.env.TOKEN)
+client.login(process.env.token)
 
 client.on('ready', () => {
     console.log('bot is online')
