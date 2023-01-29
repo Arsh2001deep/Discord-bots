@@ -1,6 +1,8 @@
 require('dotenv').config()
 
-const { Client, IntentsBitField, messageLink } = require('discord.js');
+const { Client, IntentsBitField } = require('discord.js');
+const fs = require("node:fs")
+
 
 
 
@@ -23,5 +25,14 @@ client.on('ready', () => {
 
 })
 client.on("messageCreate", (message) => {
-    if (message.content == "hi") { message.reply("hello") }
+    let text = message.content.toLowerCase()
+    let arr = text.split(' ');
+    let data;
+    data = fs.readFileSync("./arsh.txt", "utf-8").toLowerCase().split(' ')
+    for (let el of arr) {
+        if (data.includes(el)) {
+            message.reply('jo bolta hai wahi hota hai')
+            break
+        }
+    }
 })
